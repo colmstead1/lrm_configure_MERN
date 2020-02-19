@@ -85,7 +85,8 @@ class Home extends Component {
 
   render() {
     return (
-      <>
+      <div>
+        <a href="https://github.com/login/oauth/authorize?client_id=629e93dcd67398b8f56a">Sign in with Github</a>
         <p>Counters:</p>
 
         <ul>
@@ -100,7 +101,7 @@ class Home extends Component {
         </ul>
 
         <button onClick={this.newCounter}>New counter</button>
-      </>
+      </div>
     );
   }
 }
