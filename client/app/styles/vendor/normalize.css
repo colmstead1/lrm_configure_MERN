@@ -417,3 +417,179 @@ textarea {
   -webkit-appearance: button; /* 1 */
   font: inherit; /* 2 */
 }
+
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+a:visited{
+  text-decoration: none;
+}
+#repoSearch{
+  appearance: none;
+  padding: 7px;
+  width: 40%;
+  margin-bottom: 3%;
+  margin-left: 22%;
+}
+.repoContainer{
+  padding: 2%;
+  max-width: 75%;
+  margin: 0 auto;
+  padding-left: 20%;
+}
+section{
+  border-bottom: 1px solid #AAAAAA;
+}
+h1{
+  background: #222222;
+  color: white;
+  margin-top: 0;
+  padding: 1%;
+}
+#welcome{
+  padding-left: 3%;
+}
+button{
+  padding: 0.5%;
+  border-radius: 4px;
+  font-weight: bold;
+}
+button:hover{
+  background: lightblue;
+}
+button{
+  cursor: pointer;
+  border-color: royalblue;
+  color: darkblue;
+}
+button a{
+  color: darkblue;
+  text-decoration: none;
+  padding: 5px;
+}
+button a:link{
+  color: darkblue;
+}
+button a:visited{
+  color: darkblue;
+}
+#inLine{
+  display:inline;
+}
+aside{
+  display: inline;
+  margin-left: 3%;
+}
+#confButton{
+  float: right;
+  margin-top: 1%;
+}
+
+
+
+
+#nav{
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  list-style-type: none;
+  position:fixed;
+  top: 0;
+  bottom:0;
+  margin-top: 100px;
+  margin-left: 10px;
+  max-width: 125px;
+}
+#nav li{
+  font-weight: bold;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #AAAAAA;
+}
+#nav li:hover:not(.active) {
+  background-color: #F1F1F1;
+}
+#nav li.active {
+  background-color: #F1F1F1;
+}
+.formContainer{
+  width: 70vw;
+  margin-left: 150px;
+  background: #F1F1F1;
+  margin-top: 100px;
+  top: 0;
+  bottom:0;
+  position:fixed;
+  overflow-y:scroll;
+  overflow-x:hidden;
+
+  border: 1px solid #AAAAAA;
+  padding: 3%;
+  margin-bottom: 1%;
+}
+.formSection{
+  padding: 3%;
+  padding-bottom: 4%;
+  border-bottom: 1px solid #AAAAAA;
+}
+.dropdown{
+  width: 80%;
+  appearance: none;
+  padding: 10px;
+  cursor: pointer;
+}
+option{
+  padding: 100px;
+}
+.formButtons{
+  position: fixed;
+  padding: 10px;
+  margin-left: 1%;
+  top: 90%;
+}
+#json{
+  display: none;
+}
+#resx{
+  display: none;
+}
+#properties{
+  display: none;
+}
+#saveButton{
+  right: 18%;
+}
+#cancelButton{
+  right: 25%;
+}
+#grid{
+  background-color: white;
+  padding: 2%;
+}
+#headers{
+  padding: 0;
+  list-style-type: none;
+  overflow: hidden;
+}
+#headers li{
+  margin-left: 3%;
+  margin-right: 3%;
+  float: left;
+}
+.tab{
+  margin-left: 3%;
+}
+small{
+  padding: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 1%;
+  background-color: #D8D8D8;
+  border-radius: 15px;
+}

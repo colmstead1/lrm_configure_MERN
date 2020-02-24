@@ -1,109 +1,94 @@
 import React, { Component } from 'react';
-import 'whatwg-fetch';
+import { Link } from 'react-router-dom'
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
+let isConf, isResx, resxTitle, isJson, jsonTitle, isProperties, proptertiesTitle;
+const Repos = ({id, title, configured, description, fileJson, fileResx, fileProperties, confButton}) =>{
+  if (configured === true) {
+    //isConf = <img src={blueCheck} alt="verified" width="20px"/>;
+    isConf = 'blueCheck';
+  } else {
+    isConf = '';
+  }
 
+  if (fileJson === true) {
+    //isJson = <img src={redDot} alt="verified" width="15px"/>;
+    isJson = 'RedDot';
+    jsonTitle = " .json  ";
+  } else {
+    isJson = '';
+    jsonTitle = '';
+  }
+  if (fileResx === true) {
+    //isResx = <img src={yellowDot} alt="verified" width="15px"/>;
+    isResx = 'YellowDot';
+    resxTitle = " .resx  ";
+  } else {
+    isResx = '';
+    resxTitle = "";
+  }if (fileProperties === true) {
+    //isProperties = <img src={greenDot} alt="verified" width="15px"/>;
+    isProperties = 'GreenDot';
+    proptertiesTitle = ' .properties';
+  } else {
+    isProperties = '';
+    proptertiesTitle = '';
+  }
+
+  return(
+    <div className='repoContainer'>
+      <section>
+        <div>
+          <h2 id="inLine">{title}</h2>
+          <aside>{isConf}</aside>
+          <button id="confButton"><Link to={{pathname: "/form", state:{id: {id}}}}>{confButton}</Link></button>
+        </div>
+        <p>{description}</p>
+        <p>{isJson}{jsonTitle}   {isResx}{resxTitle}   {isProperties}{proptertiesTitle}</p>
+      </section>
+    </div>
+  )
+};
+
+export default class Home extends Component {
+  constructor(){
+    super();
     this.state = {
-      counters: []
+      search: ''
     };
-
-    this.newCounter = this.newCounter.bind(this);
-    this.incrementCounter = this.incrementCounter.bind(this);
-    this.decrementCounter = this.decrementCounter.bind(this);
-    this.deleteCounter = this.deleteCounter.bind(this);
-
-    this._modifyCounter = this._modifyCounter.bind(this);
   }
-
-  componentDidMount() {
-    fetch('/api/counters')
-      .then(res => res.json())
-      .then(json => {
-        this.setState({
-          counters: json
-        });
-      });
-  }
-
-  newCounter() {
-    fetch('/api/counters', { method: 'POST' })
-      .then(res => res.json())
-      .then(json => {
-        let data = this.state.counters;
-        data.push(json);
-
-        this.setState({
-          counters: data
-        });
-      });
-  }
-
-  incrementCounter(index) {
-    const id = this.state.counters[index]._id;
-
-    fetch(`/api/counters/${id}/increment`, { method: 'PUT' })
-      .then(res => res.json())
-      .then(json => {
-        this._modifyCounter(index, json);
-      });
-  }
-
-  decrementCounter(index) {
-    const id = this.state.counters[index]._id;
-
-    fetch(`/api/counters/${id}/decrement`, { method: 'PUT' })
-      .then(res => res.json())
-      .then(json => {
-        this._modifyCounter(index, json);
-      });
-  }
-
-  deleteCounter(index) {
-    const id = this.state.counters[index]._id;
-
-    fetch(`/api/counters/${id}`, { method: 'DELETE' })
-      .then(_ => {
-        this._modifyCounter(index, null);
-      });
-  }
-
-  _modifyCounter(index, data) {
-    let prevData = this.state.counters;
-
-    if (data) {
-      prevData[index] = data;
-    } else {
-      prevData.splice(index, 1);
-    }
-
-    this.setState({
-      counters: prevData
-    });
+  updateSearch(event){
+    this.setState({search: event.target.value});
   }
 
   render() {
+    const { repos } = this.props;
+    let searchResults = repos.filter(
+      (repo) => {
+        return repo.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+      }
+    );
     return (
       <div>
-        <a href="https://github.com/login/oauth/authorize?client_id=629e93dcd67398b8f56a">Sign in with Github</a>
-        <p>Counters:</p>
-
-        <ul>
-          { this.state.counters.map((counter, i) => (
-            <li key={i}>
-              <span>{counter.count} </span>
-              <button onClick={() => this.incrementCounter(i)}>+</button>
-              <button onClick={() => this.decrementCounter(i)}>-</button>
-              <button onClick={() => this.deleteCounter(i)}>x</button>
-            </li>
-          )) }
-        </ul>
-
-        <button onClick={this.newCounter}>New counter</button>
+        <button><a href="https://github.com/login/oauth/authorize?client_id=629e93dcd67398b8f56a">Sign in with Github</a></button>
+        <input id="repoSearch"
+               type="search"
+               placeholder="Search..."
+               value={this.state.search}
+               onChange={this.updateSearch.bind(this)}/>
+        {searchResults.map(
+          (repo, i) =>
+            <Repos
+              key={i}
+              title={repo.title}
+              configured={repo.configured}
+              description={repo.description}
+              fileJson={repo.fileJson}
+              fileResx={repo.fileResx}
+              fileProperties={repo.fileProperties}
+              confButton={repo.confButton}
+            />
+        )}
       </div>
-    );
+    )
   }
 }
-
-export default Home;
