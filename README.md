@@ -1,3 +1,7 @@
+# LRM Configure with Git Hub OAuth
+
+Note:  If OAuth is having issues loading, revoke access to oauth token and try again.
+
 # MERN-boilerplate
 
 This is a boilerplate project using the following technologies:
