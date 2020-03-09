@@ -1,5 +1,11 @@
 # LRM Configure with Git Hub OAuth
 
+After running
+```shell
+npm run start:dev
+```
+go to http://localhost:9000/ to access the site.
+
 Note:  If OAuth is having issues loading, revoke access to oauth token and try again.
 
 # MERN-boilerplate
