@@ -40,7 +40,7 @@ const Repos = ({id, title, configured, description, fileJson, fileResx, fileProp
         <div>
           <h2 id="inLine">{title}</h2>
           <aside>{isConf}</aside>
-          <button id="confButton"><Link to={{pathname: "/form", state:{id: {id}}}}>{confButton}</Link></button>
+          <button className="confButton"><Link to={{pathname: "/form", state:{id: {id}}}}>{confButton}</Link></button>
         </div>
         <p>{description}</p>
         <p>{isJson}{jsonTitle}   {isResx}{resxTitle}   {isProperties}{proptertiesTitle}</p>
@@ -69,25 +69,29 @@ export default class Home extends Component {
     );
     return (
       <div>
-        <button><a href="https://github.com/login/oauth/authorize?client_id=629e93dcd67398b8f56a">Sign in with Github</a></button>
-        <input id="repoSearch"
-               type="search"
-               placeholder="Search..."
-               value={this.state.search}
-               onChange={this.updateSearch.bind(this)}/>
-        {searchResults.map(
-          (repo, i) =>
-            <Repos
-              key={i}
-              title={repo.title}
-              configured={repo.configured}
-              description={repo.description}
-              fileJson={repo.fileJson}
-              fileResx={repo.fileResx}
-              fileProperties={repo.fileProperties}
-              confButton={repo.confButton}
-            />
-        )}
+        <div id="searchContainer">
+          <input id="repoSearch"
+                 type="search"
+                 placeholder="Search..."
+                 value={this.state.search}
+                 onChange={this.updateSearch.bind(this)}
+          />
+        </div>
+        <div id="repo-style">
+          {searchResults.map(
+                 (repo, i) =>
+                   <Repos
+                     key={i}
+                     title={repo.title}
+                     configured={repo.configured}
+                     description={repo.description}
+                     fileJson={repo.fileJson}
+                     fileResx={repo.fileResx}
+                     fileProperties={repo.fileProperties}
+                     confButton={repo.confButton}
+                   />
+               )}
+          </div>
       </div>
     )
   }

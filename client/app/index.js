@@ -10,9 +10,12 @@ import {
 
 import App from './components/App/App';
 import NotFound from './components/App/NotFound';
+import Login from './components/Login/Login';
 import Home from './components/Home/Home';
 import ConfForm from './components/Form/Form';
 import ConfFiles from './components/Form/ConfFiles';
+import GitHubConnect from './components/GitHub/GitHub';
+import Header from './components/Header/Header'
 import './styles/styles.scss';
 
 let repoList = [
@@ -101,8 +104,20 @@ render((
   <Router>
     <App>
       <Switch>
+        <Route exact path="/login">
+          <div>
+            <Header/>
+            <Login/>
+          </div>
+        </Route>
         <Route exact path="/">
-          <Home repos={repoList}/>
+          <div>
+            <Header/>
+            <div id="repo-page">
+              <GitHubConnect />
+              <Home repos={repoList}/>
+            </div>
+          </div>
         </Route>
         <Route path="/form">
           <ConfForm slList={sourceLocaleList} tlList={targetLocaleList} eList={filePatternList} repos={repoList}/>

@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Footer = () => (
-  <footer>
+  <footer id="footer">
     <hr />
-    <p>Footer</p>
+    <p>Lingoport Inc.</p>
   </footer>
 );
 

@@ -72,13 +72,15 @@ export default class ConfForm extends Component {
     /*console.log(repos);*/
     return(
       <div>
-        <h1>ConfForm</h1>
+        <header>
+          <h1>ConfForm</h1>
+        </header>
         <nav>
           <ul id="nav">
             <li id="localesNav" className="active"><a href="#locales">Locales</a></li>
-            <li id="fileTypeNav"><a href="#fileType">File Type</a></li>
-            <li id="extensionsNav"><a href="#extensions">Resource File Extensions</a></li>
-            <li id="confFilesNav"><Link to="/confFiles">Files Being Configured</Link></li>
+            <li id="fileTypeNav" className=""><a href="#fileType">File Type</a></li>
+            <li id="extensionsNav" className=""><a href="#extensions">Resource File Extensions</a></li>
+            <li id="confFilesNav" className=""><Link to="/confFiles">Files Being Configured</Link></li>
           </ul>
         </nav>
         <form className="formContainer" onSubmit={this.submit}>
@@ -240,9 +242,11 @@ export default class ConfForm extends Component {
               </div>
             </div>
           </div>
-          <button type="submit" className="formButtons" id="saveButton" onClick={save}>SAVE</button>
-          <button type="submit" className="formButtons" id="cancelButton"><Link to="/">EXIT</Link></button>
         </form>
+        <div class="container">
+          <button type="submit" className="formButtons confButton" id="saveButton" onClick={save}>SAVE</button>
+          <Link to="/"><button type="submit" className="formButtons confButton" id="cancelButton">EXIT</button></Link>
+        </div>
       </div>
     )
   }
