@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import './css/App.css';
 import {Link} from "react-router-dom";
 
 const SourceLocaleList = ({id, MT, repo}) =>{
@@ -72,9 +71,6 @@ export default class ConfForm extends Component {
     /*console.log(repos);*/
     return(
       <div>
-        <header>
-          <h1>ConfForm</h1>
-        </header>
         <nav>
           <ul id="nav">
             <li id="localesNav" className="active"><a href="#locales">Locales</a></li>
@@ -243,7 +239,7 @@ export default class ConfForm extends Component {
             </div>
           </div>
         </form>
-        <div class="container">
+        <div className="container">
           <button type="submit" className="formButtons confButton" id="saveButton" onClick={save}>SAVE</button>
           <Link to="/"><button type="submit" className="formButtons confButton" id="cancelButton">EXIT</button></Link>
         </div>

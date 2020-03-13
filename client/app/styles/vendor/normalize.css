@@ -2,7 +2,6 @@
 body {
   font-family: sans-serif;
   margin: 0;
-  font-family: 'Open Sans', ;
 }
 a{
   text-decoration: none;
@@ -19,8 +18,10 @@ a:visited{
   position: fixed;
 }
 #searchContainer{
+  top: 0;
   background-color: white;
-  padding: 0px 0px 60px 0px;
+  margin-top: 90px;
+  padding: 20px 0px 60px 0px;
   width: 100%;
   position: fixed;
 }
@@ -38,13 +39,16 @@ h1 h2 h3 h4{
 header{
   background-color: #1E214E;
   color: #A7C64B;
-  padding: 2%;
+  padding: 20px 30px 20px 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   position: fixed;
   width: 100%;
   box-shadow: 0px 20px white;
+}
+#header-div{
+  padding-bottom: 120px;
 }
 h1{
   margin: 0;
@@ -79,15 +83,13 @@ h1{
 }
 /*makes repo buttons align right*/
 .confButton {
-  box-shadow:inset 0px 1px 0px 0px #ffffff;
   background:linear-gradient(to bottom, #d6d6d6 5%, #bfbfbf 100%);
   background-color:#d6d6d6;
   border-radius:6px;
   border:1px solid #e8e8e8;
   display:inline-block;
   cursor:pointer;
-  color:#1E214E;
-  font-family:Arial;
+  color: #666666;
   font-size:15px;
   font-weight:bold;
   padding:6px 24px;
@@ -96,7 +98,6 @@ h1{
 
   float: right;
   margin-top: 1%;
-  color: white;
 }
 .confButton:hover {
   background:linear-gradient(to bottom, #bfbfbf 5%, #d6d6d6 100%);
@@ -121,13 +122,9 @@ aside{
 }
 #repo-page{
   display: flex;
-  padding-top: 110px;
 }
 #repo-style{
   padding-top: 70px;
-}
-#login-page{
-  padding-top: 100px;
 }
 /*-------------------------------------------------*/
 #nav{
@@ -138,7 +135,7 @@ aside{
   position:fixed;
   top: 0;
   bottom:0;
-  margin-top: 100px;
+  margin-top: 120px;
   margin-left: 10px;
   max-width: 125px;
 }
@@ -177,13 +174,13 @@ option{
   padding: 100px;
 }
 #json{
-  display: none;
+  /*display: none;*/
 }
 #resx{
-  display: none;
+  /*display: none;*/
 }
 #properties{
-  display: none;
+  /*display: none;*/
 }
 #grid{
   background-color: white;
@@ -215,9 +212,91 @@ small{
   display:flex;
   flex-direction: row;
   text-align: center;
+  justify-content: space-between;
+  width: 98%;
 }
 
 
 #footer{
 
+}
+
+/* Login page */
+#login-page{
+  max-width: 55%;
+  height: 65vh;
+  margin: 0 auto;
+}
+#signUp{
+  width: 30%;
+  background-color: #A7C64B;
+  border-radius: 25px 0px 0px 25px;
+  padding: 15% 3% 15% 3%;
+}
+#logIn{
+  width: 90%;
+  background-color: #D8D8D8;
+  border-radius: 0px 25px 25px 0px;
+  padding: 3%;
+}
+.login-page-button{
+  background-color: white;
+  border-radius:42px;
+  border:1px solid #dcdcdc;
+  display:inline-block;
+  cursor:pointer;
+  color:#696969;
+  font-size:15px;
+  padding:5px 15px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #ffffff;
+  box-shadow: 2px 3px 3px #AAAAAA;
+}
+.login-page-button:hover {
+  background-color:#c9c9c9;
+}
+.login-page-button:active {
+  position:relative;
+  top:1px;
+}
+#signUp p{
+  font-size: 10px;
+}
+.vertContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#logIn label{
+  font-size: 10px;
+  text-align: left;
+}
+#logIn input{
+  padding: 6px;
+  width: 100%;
+  border-radius: 5px;
+  outline: none;
+}
+input#login-button{
+  text-align: center;
+  width: 100px;
+  border-radius:42px;
+}
+#logIn aside{
+  font-size: 12px;
+  text-decoration: underline;
+}
+#logout-button{
+  background:linear-gradient(to bottom, #5b5e8a 5%, #4a4d7d 100%);
+  border-radius:6px;
+  display:inline-block;
+  cursor:pointer;
+  color: #A7C64B;
+  font-size:15px;
+  font-weight:bold;
+  padding:6px 24px;
+  text-decoration:none;
+}
+#logout-button:hover {
+  background:linear-gradient(to bottom, #4a4d7d 5%, #5b5e8a 100%);
 }

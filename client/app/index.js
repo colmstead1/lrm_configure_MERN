@@ -120,7 +120,10 @@ render((
           </div>
         </Route>
         <Route path="/form">
-          <ConfForm slList={sourceLocaleList} tlList={targetLocaleList} eList={filePatternList} repos={repoList}/>
+          <div>
+            <Header/>
+            <ConfForm slList={sourceLocaleList} tlList={targetLocaleList} eList={filePatternList} repos={repoList}/>
+          </div>
         </Route>
         <Route exact path="/confFiles">
           <ConfFiles />

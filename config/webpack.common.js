@@ -36,7 +36,13 @@ module.exports = {
         include: helpers.root('client'),
         loader: 'babel-loader'
       },
-
+      // other files
+      {
+        test: /\.(ttf|eot|svg|gif|png)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        use: [{
+          loader: 'file-loader'
+        }]
+      },
       // SCSS files
       {
         test: /\.scss$/,

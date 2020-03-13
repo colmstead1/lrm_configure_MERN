@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom";
+import Login from "../Login/Login";
+import * as firebase from "firebase";
+
+const inputUsername = "viol5229";
+console.log("input username "+ inputUsername);
+let userURL = 'https://api.github.com/users/' + inputUsername;
+
 
 export default class GitHubConnect extends Component {
   constructor(){
     super();
     this.state = {
+      user: "",
+      repos: "",
     };
   }
+
   componentDidMount() {
-    fetch(`https://api.github.com/users/viol5229`)
+    fetch(userURL)
       .then(response => response.json())
       .then(
         user => {
@@ -17,7 +27,7 @@ export default class GitHubConnect extends Component {
           });
         }
       );
-    fetch(`https://api.github.com/users/viol5229/repos`)
+    fetch(userURL + "/repos")
       .then(response => response.json())
       .then(
         repos => {
@@ -33,47 +43,33 @@ export default class GitHubConnect extends Component {
   renderStat(stat) {
     return (
       <div key={stat.name}>
-        <Link to={stat.url}>
           <p>{stat.name}: {stat.value}</p>
-        </Link>
       </div>
     );
   }
 
   render() {
-    // If the state doesn't have a user key, it means the AJAX didn't complete yet. Simply render a LOADING indicator.
+    // If the state doesn't have a user key, it means the AJAX didn't complete yet. Render a LOADING indicator.
     if (!this.state.user) {
       return (<div className="user-page">LOADING...</div>);
     }
 
     // If we get to this part of `render`, then the user is loaded
     const user = this.state.user;
-    const repos = this.state.repos;
-    console.log(repos);
+    //const repos = this.state.repos;
+    //console.log(repos);
 
     // Gather up some number stats about the user, to be used in a map below
     const repoList = [
       {
-        name: 'Public Repos',
-        value: user.id,
-        url: `/user/viol5229/repos`
-        /*title: "Globalyzer-ALM-Integration",
-        configured: false,
-        description: "",
-        fileJson: false,
-        fileResx: false,
-        fileProperties: false,
-        confButton: "CONFIGURE"*/
-      },
-      {
         name: 'Followers',
         value: user.followers,
-        url: `/user/viol5229/followers`
+        url: `/user/`+inputUsername+`/followers`
       },
       {
         name: 'Following',
         value: user.following,
-        url: `/user/viol5229/following`
+        url: `/user/`+inputUsername+`/following`
       }
     ];
 

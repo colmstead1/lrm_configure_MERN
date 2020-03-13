@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import blueCheck from '../../img/blueCheck.png'
+import yellowDot from '../../img/yellowDot.png'
+import greenDot from '../../img/greenDot.png'
+import redDot from '../../img/redDot.png'
 
 let isConf, isResx, resxTitle, isJson, jsonTitle, isProperties, proptertiesTitle;
 const Repos = ({id, title, configured, description, fileJson, fileResx, fileProperties, confButton}) =>{
   if (configured === true) {
-    //isConf = <img src={blueCheck} alt="verified" width="20px"/>;
-    isConf = 'blueCheck';
+    isConf = <img src={blueCheck} alt="verified" width="20px"/>;
   } else {
     isConf = '';
   }
 
   if (fileJson === true) {
-    //isJson = <img src={redDot} alt="verified" width="15px"/>;
-    isJson = 'RedDot';
+    isJson = <img src={redDot} alt="verified" width="15px"/>;
     jsonTitle = " .json  ";
   } else {
     isJson = '';
     jsonTitle = '';
   }
   if (fileResx === true) {
-    //isResx = <img src={yellowDot} alt="verified" width="15px"/>;
-    isResx = 'YellowDot';
+    isResx = <img src={yellowDot} alt="verified" width="15px"/>;
     resxTitle = " .resx  ";
   } else {
     isResx = '';
     resxTitle = "";
   }if (fileProperties === true) {
-    //isProperties = <img src={greenDot} alt="verified" width="15px"/>;
-    isProperties = 'GreenDot';
+    isProperties = <img src={greenDot} alt="verified" width="15px"/>;
     proptertiesTitle = ' .properties';
   } else {
     isProperties = '';
@@ -40,7 +40,7 @@ const Repos = ({id, title, configured, description, fileJson, fileResx, fileProp
         <div>
           <h2 id="inLine">{title}</h2>
           <aside>{isConf}</aside>
-          <button className="confButton"><Link to={{pathname: "/form", state:{id: {id}}}}>{confButton}</Link></button>
+          <Link to={{pathname: "/form", state:{id: {id}}}}><button className="confButton">{confButton}</button></Link>
         </div>
         <p>{description}</p>
         <p>{isJson}{jsonTitle}   {isResx}{resxTitle}   {isProperties}{proptertiesTitle}</p>
