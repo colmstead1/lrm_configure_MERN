@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "MERN stack project boilerplate",
   "author": "Eugene Cheung",
+  "homepage": "https://colmstead1.github.io/lrm_configure/login",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/arkon/MERN-boilerplate.git"
@@ -11,7 +12,9 @@
   "private": true,
   "scripts": {
     "start": "webpack -p --progress --profile --colors && node server",
-    "start:dev": "node server"
+    "start:dev": "node server",
+    "predeploy": "npm run start:dev",
+    "deploy": "gh-pages -d build"
   },
   "engines": {
     "node": ">=6"
@@ -49,6 +52,7 @@
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.8.3"
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "gh-pages": "^2.2.0"
   }
 }
